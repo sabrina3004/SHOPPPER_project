@@ -30,7 +30,7 @@ const Products = ({ title = "Our Products", showHeading = true }) => {
     
         <div className="max-w-7xl mx-auto  px-4 py-8">
       {showHeading && <h2 className="text-3xl font-bold mb-8 text-center text-gray-700">{title}</h2>}
-      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid gap-10  grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         {items && items.length > 0 ? (
           items.map((product) => (
             <ProductCard key={product.id} product={product} />
