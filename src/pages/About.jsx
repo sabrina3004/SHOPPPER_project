@@ -36,20 +36,20 @@ const About = () => {
           About Us
         </h1>
         <p className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-3xl mx-auto">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+          tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
         </p>
       </div>
 
-      
       <div className="max-w-6xl mx-auto mt-12 px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        
         <div className="text-left">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
             We Are Your Favourite, Online Store.
           </h2>
           <p className="text-gray-600 text-base sm:text-lg mb-6">
-            Dui habitasse provident eu etiam praesent placeat maiores temporibus,
-            accumsan parturient autem, mi animi ipsa. Lobortis maxime quos, pellentesq.
+            Dui habitasse provident eu etiam praesent placeat maiores
+            temporibus, accumsan parturient autem, mi animi ipsa. Lobortis
+            maxime quos, pellentesq.
           </p>
           <p className="text-gray-600 text-base sm:text-lg">
             Ee platea animi commodo tincidunt ridiculus tempora, ornare lorem
@@ -58,7 +58,6 @@ const About = () => {
           </p>
         </div>
 
-        {/* Right: Features list */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {features.map((item, index) => (
             <div key={index} className="flex flex-col items-start text-left">

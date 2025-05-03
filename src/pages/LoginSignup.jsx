@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
 
 const LoginSignup = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-amber-50 px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-800">Sign Up</h1>
-        
+        <h1 className="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-800">
+          Sign Up
+        </h1>
+
         <div className="space-y-4 mb-6">
           <input
             type="text"
@@ -29,16 +31,19 @@ const LoginSignup = () => {
         </button>
 
         <p className="text-sm text-center mt-4 text-gray-600">
-          Already have an account?{' '}
-          <span className="text-red-500 hover:underline cursor-pointer">Login here</span>
+          Already have an account?{" "}
+          <span className="text-red-500 hover:underline cursor-pointer">
+            Login here
+          </span>
         </p>
 
         <div className="flex items-start mt-4 text-sm text-gray-600">
           <input type="checkbox" className="mt-1 mr-2" />
           <p>
-            By continuing, I agree to the{' '}
-            <span className="text-red-500 hover:underline">terms of use</span> &{' '}
-            <span className="text-red-500 hover:underline">privacy policy</span>.
+            By continuing, I agree to the{" "}
+            <span className="text-red-500 hover:underline">terms of use</span> &{" "}
+            <span className="text-red-500 hover:underline">privacy policy</span>
+            .
           </p>
         </div>
       </div>

@@ -5,7 +5,6 @@ const Contact = () => {
   return (
     <div className="bg-gradient-to-b from-amber-100 from-10% via-zinc-50 via-30% to-white to-90% ...">
       <div className="flex flex-col p-18  md:flex-row gap-8 p-6 max-w-7xl mx-auto">
-        {/* Left Column: Contact Info */}
         <div className="w-full md:w-1/2 flex flex-col gap-6">
           <div>
             <h1 className="text-4xl font-bold mb-2">Say Hello.</h1>
@@ -33,7 +32,6 @@ const Contact = () => {
           </ul>
         </div>
 
-        {/* Right Column: Contact Form */}
         <div className="w-full md:w-1/2 bg-white p-6 rounded-xl shadow-md">
           <h3 className="text-2xl font-semibold mb-6">Ask Your Queries</h3>
           <form className="space-y-5">

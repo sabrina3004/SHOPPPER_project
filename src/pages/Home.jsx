@@ -5,9 +5,7 @@ import hero from "../components/assets/hero_1.png";
 const Home = () => {
   return (
     <div>
-      {/* Hero Section */}
       <div className="w-full bg-gradient-to-b from-amber-100 to-zinc-50 p-10 mb-12 flex flex-col-reverse md:flex-row items-center justify-around gap-10">
-        {/* Text Content */}
         <div className="flex-1 text-center md:text-left space-y-5 px-4">
           <span className="inline-block bg-red-50 text-red-600 font-semibold px-3 py-1 rounded-full text-sm shadow">
             New Arrival
@@ -37,22 +35,17 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Image */}
         <div className="flex-1 flex justify-center px-4">
           <img
             src={hero}
             alt="Fashion Model"
             className="w-[300px] md:w-[400px] "
-            
           />
         </div>
       </div>
 
-      {/* Products Section */}
-      
       <div className="max-w-7xl mx-auto px-4">
         <Products showHeading={true} title="Our Products" />
-     
       </div>
     </div>
   );

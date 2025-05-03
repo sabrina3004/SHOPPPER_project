@@ -12,7 +12,7 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const handleAddToCart = () => {
     dispatch(addToCart(product));
-    window.scrollTo({top: 0, behavior: "smooth"})
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   if (!product) {
@@ -27,7 +27,10 @@ const ProductDetail = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <Link to="/all_product" className="text-blue-500 hover:underline mb-4 inline-block">
+      <Link
+        to="/all_product"
+        className="text-blue-500 hover:underline mb-4 inline-block"
+      >
         ← Back to Products
       </Link>
       <div className="w-full flex flex-col md:flex-row gap-10 items-center md:items-start">
