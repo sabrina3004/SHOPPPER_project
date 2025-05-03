@@ -1,101 +1,153 @@
-import React,{ useState } from 'react';
-import logo from './assets/logo.png'; 
+import React, { useState } from "react";
+import logo from "./assets/logo.png";
 import { MdOutlineShoppingCart } from "react-icons/md";
-import { Link } from 'react-router-dom';
-import { FiMenu } from 'react-icons/fi';
-
-
-
+import { Link, useLocation } from "react-router-dom";
+import { FiMenu, FiX } from "react-icons/fi";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [menu, setMenu] = useState('Home');
+
+  const cartItems = useSelector((state) => state.cart.items);
+  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   return (
     <header className="bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-        
         <div className="flex items-center gap-2">
           <img src={logo} alt="Logo" className="h-12 w-auto" />
           <span className="text-4xl font-bold text-gray-700">SHOPPER</span>
         </div>
 
-        
         <nav className="hidden md:flex items-center space-x-8 font-medium text-gray-700 text-sm">
-          <li onClick={() => setMenu('Home')} className="list-none">
+          <li className="list-none">
             <Link to="/" className="hover:text-red-500">
-            HOME
+              HOME
             </Link>
-            {menu === 'Home' && <div className="h-1 bg-red-500 mt-1 rounded"></div>}
+            {currentPath === "/" && (
+              <div className="h-1 bg-red-500 mt-1 rounded"></div>
+            )}
           </li>
-          <li onClick={() => setMenu('all_product')} className="list-none">
+          <li className="list-none">
             <Link to="/all_product" className="hover:text-red-500">
               ALL PRODUCTS
             </Link>
-            {menu === 'all_product' && <div className="h-1 bg-red-500 mt-1 rounded"></div>}
+            {currentPath === "/all_product" && (
+              <div className="h-1 bg-red-500 mt-1 rounded"></div>
+            )}
           </li>
-          <li onClick={() => setMenu('about')} className="list-none">
+          <li className="list-none">
             <Link to="/about" className="hover:text-red-500">
               ABOUT
             </Link>
-            {menu === 'about' && <div className="h-1 bg-red-500 mt-1 rounded"></div>}
+            {currentPath === "/about" && (
+              <div className="h-1 bg-red-500 mt-1 rounded"></div>
+            )}
           </li>
-          <li onClick={() => setMenu('contact')} className="list-none">
+          <li className="list-none">
             <Link to="/contact" className="hover:text-red-500">
               CONTACT
             </Link>
-            {menu === 'contact' && <div className="h-1 bg-red-500 mt-1 rounded"></div>}
+            {currentPath === "/contact" && (
+              <div className="h-1 bg-red-500 mt-1 rounded"></div>
+            )}
           </li>
         </nav>
-      
+
         <div className="hidden md:flex items-center gap-6">
           <Link to="/login">
-            <button className="px-6 py-2 text-gray-600 border border-gray-300 rounded-full hover:bg-gray-100 text-sm font-medium">
+            <button
+              className={`px-6 py-2 border rounded-full text-sm font-medium ${
+                location.pathname === "/login"
+                  ? "border-red-500 text-red-500"
+                  : "text-gray-600 border-gray-300 hover:bg-gray-100"
+              }`}
+            >
               Login
             </button>
           </Link>
-          <Link to="/cart" className="relative">
-            <MdOutlineShoppingCart  size={32} className=" text-gray-700" />
+          <Link to="/cart" className="relative group">
+            <MdOutlineShoppingCart
+              size={32}
+              className={`transition-colors ${
+                currentPath === "/cart"
+                  ? "text-red-500"
+                  : "text-gray-700 group-hover:text-red-500"
+              }`}
+            />
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
-              0
+              {totalQuantity}
             </span>
           </Link>
         </div>
 
-        
         <div className="md:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)}>
-          <FiMenu className="w-6 h-6 text-gray-700" />
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="transition-transform duration-300 ease-in-out"
+          >
+            {menuOpen ? (
+              <FiX className="w-6 h-6 text-gray-700 transform rotate-180 transition-transform duration-300" />
+            ) : (
+              <FiMenu className="w-6 h-6 text-gray-700 transition-transform duration-300" />
+            )}
           </button>
         </div>
       </div>
 
-     
       {menuOpen && (
         <div className="md:hidden px-4 pb-4 space-y-4 text-gray-700">
-          <Link to="/" onClick={() => setMenu('HOME')} className="block">
-            HOME {menu === 'HOME' && <div className="h-1 bg-red-500 mt-1 rounded w-10" />}
+          <Link to="/" className="block">
+            HOME{" "}
+            {currentPath === "/" && (
+              <div className="h-1 bg-red-500 mt-1 rounded w-10" />
+            )}
           </Link>
-          <Link to="/all_product" onClick={() => setMenu('all_product')} className="block">
-            ALL PRODUCTS {menu === 'all_product' && <div className="h-1 bg-red-500 mt-1 rounded w-10" />}
+          <Link to="/all_product" className="block">
+            ALL PRODUCTS{" "}
+            {currentPath === "/all_product" && (
+              <div className="h-1 bg-red-500 mt-1 rounded w-10" />
+            )}
           </Link>
-          <Link to="/about" onClick={() => setMenu('about')} className="block">
-            ABOUT {menu === 'about' && <div className="h-1 bg-red-500 mt-1 rounded w-10" />}
+          <Link to="/about" className="block">
+            ABOUT{" "}
+            {currentPath === "/about" && (
+              <div className="h-1 bg-red-500 mt-1 rounded w-10" />
+            )}
           </Link>
-          <Link to="/contact" onClick={() => setMenu('contact')} className="block">
-           CONTACT {menu === 'contact' && <div className="h-1 bg-red-500 mt-1 rounded w-10" />}
+          <Link to="/contact" className="block">
+            CONTACT{" "}
+            {currentPath === "/contact" && (
+              <div className="h-1 bg-red-500 mt-1 rounded w-10" />
+            )}
           </Link>
 
           <div className="flex justify-between pt-4 items-center">
             <Link to="/login">
-              <button className="px-6 py-4 border border-gray-300 rounded-sm hover:bg-gray-100 text-sm font-medium">
+              <button
+                className={`px-6 py-4 border rounded-sm text-sm font-medium ${
+                  currentPath === "/login"
+                    ? "border-red-500 text-red-500"
+                    : "text-gray-600 border-gray-300 hover:bg-gray-100"
+                }`}
+              >
                 Login
               </button>
             </Link>
-            <Link to="/cart" className="relative">
-              <MdOutlineShoppingCart  size={28} className="text-gray-700" />
+            <Link to="/cart" className="relative group">
+              <MdOutlineShoppingCart
+                size={28}
+                className={`transition-colors ${
+                  currentPath === "/cart"
+                    ? "text-red-500"
+                    : "text-gray-700 group-hover:text-red-500"
+                }`}
+              />
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
-                0
+                {totalQuantity}
               </span>
             </Link>
           </div>
@@ -103,6 +155,6 @@ const Header = () => {
       )}
     </header>
   );
-}
+};
 
-export default Header
+export default Header;

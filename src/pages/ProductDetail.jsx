@@ -1,26 +1,33 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../features/cart/cartSlice";
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const product = useSelector(state =>
-    state.products.items.find(item => item.id.toString() === id)
+  const product = useSelector((state) =>
+    state.products.items.find((item) => item.id.toString() === id)
   );
+
+  const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+    window.scrollTo({top: 0, behavior: "smooth"})
+  };
 
   if (!product) {
     return (
       <div className="min-h-screen flex items-center justify-center text-xl">
         Product not found.
       </div>
-    ); 
-  } 
+    );
+  }
 
   const imageUrl = `https://admin.refabry.com/storage/product/${product.image}`;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <Link to="/" className="text-blue-500 hover:underline mb-4 inline-block"> 
+      <Link to="/all_product" className="text-blue-500 hover:underline mb-4 inline-block">
         ← Back to Products
       </Link>
       <div className="w-full flex flex-col md:flex-row gap-10 items-center md:items-start">
@@ -32,7 +39,9 @@ const ProductDetail = () => {
           />
         </div>
         <div className="flex-1">
-          <h1 className="text-4xl text-gray-800 font-bold mb-4">{product.name}</h1>
+          <h1 className="text-4xl text-gray-800 font-bold mb-4">
+            {product.name}
+          </h1>
           <p className="text-gray-700 mb-4 whitespace-pre-line">
             {product.short_desc}
           </p>
@@ -44,7 +53,10 @@ const ProductDetail = () => {
               ৳ {product.buying_price}
             </div>
           </div>
-          <button className="bg-green-600 text-white py-2 px-6 rounded-full hover:bg-green-700 transition">
+          <button
+            onClick={handleAddToCart}
+            className="bg-green-600 text-white py-2 px-6 rounded-full hover:bg-green-700 transition"
+          >
             Add to Cart
           </button>
         </div>

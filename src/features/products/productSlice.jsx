@@ -6,14 +6,14 @@ export const fetchProducts = createAsyncThunk("products/fetchProducts", async ()
   return response.data.data.data;
 });
 
-const productSlice = createSlice({
+const productSlice = createSlice({ 
   name: "products",
   initialState: {
     items: [],
     status: "idle",
     error: null,
   },
-  reducers: {},
+  reducers: {}, 
   extraReducers: (builder) => { 
     builder
       .addCase(fetchProducts.pending, (state) => {

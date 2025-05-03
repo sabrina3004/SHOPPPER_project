@@ -2,7 +2,7 @@ import React from 'react';
 
 const LoginSignup = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-amber-50 px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
         <h1 className="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-800">Sign Up</h1>
         
